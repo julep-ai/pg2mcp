@@ -1,0 +1,13 @@
+[project]
+name = "pg2mcp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "asyncpg>=0.30.0",
+    "fastmcp>=2.10.4",
+    "httpx>=0.28.1",
+    "jwt>=1.4.0",
+    "structlog>=25.4.0",
+]

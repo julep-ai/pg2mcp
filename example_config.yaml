@@ -1,0 +1,51 @@
+# Example configuration for pg2mcp
+# This connects to the test PostgreSQL server
+
+database:
+  # Connection parameters
+  host: localhost
+  port: 5432
+  database: postgres
+  user: db_admin
+  password: password
+  
+  # Connection pool settings
+  pool_min_size: 2
+  pool_max_size: 10
+
+server:
+  name: "Test PostgreSQL MCP Bridge"
+  description: "MCP interface for test PostgreSQL database"
+  version: "0.1.0"
+  host: "0.0.0.0"
+  port: 8000
+
+expose:
+  # Expose tables and views as resources
+  resources:
+    # Expose all tables in public schema
+    - pattern: "public.*"
+      description: "All public schema tables"
+      limit: 100
+    
+    # You can also expose specific tables with custom settings
+    # - table: "users"
+    #   description: "User accounts"
+    #   columns: ["id", "name", "email", "created_at"]
+    #   where: "active = true"
+    #   limit: 50
+  
+  # Expose functions as tools
+  tools:
+    # Expose all functions in public schema
+    - pattern: "public.*"
+      description: "All public schema functions"
+    
+    # You can also expose specific functions
+    # - function: "calculate_discount"
+    #   description: "Calculate customer discount percentage"
+    #   params:
+    #     customer_id:
+    #       description: "The customer ID"
+    #     amount:
+    #       description: "Purchase amount in dollars"
